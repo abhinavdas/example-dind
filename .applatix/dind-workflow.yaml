@@ -9,9 +9,9 @@ inputs:
     version:
     # Encoded username and password
     docker_username:
-      default: "%%secrets.==$1$key=default$text$AOpQV69riv9lFzrPDgxqu+ANzGlWOiQ+PZYpUciwrEAKJJFBoaNgAjt24JG3kpCkBYlY3GlZkvzLyGZgEW+gY017CDkd92JPnHnME/LswBRMw0lH+VPa4we+8RBikubSKgVKgSHPAC8vfI/oBCT0FrAA6aQmYRtDmB4WOhF9Aic43WpsVHJH7U1Z5BHj1wdMU4xvfRj2xX+4pBMkzMLoKYO9ULzGzK91Xqu8friFqRAN09t87E+ZC6ZV/+Ym8L0sd6C/kjk60jKdOhbSoebxHdUJvFJQ3/WWZR4+Z6+GHh8SqnsDAtjF1BB8DOogsSWtEY6IEguwFtgk56NViOuxsx0PHKagL73IshOEStSQEiRJ6YrRlkqep84HH4BD9zjWZz45bY08LjvMcwRZYu59ihj5WiG6FYGumpw6cHH9L4zdTw====%%"
+      default: "%%secrets.==$1$key=default$text$AWlyxzTMKtkPn7s8ayj7UNs2+AVOBpajcNjOhggOtocMCejf3gaM1+3W12D+lLyEUYTqlj0fbZ4XjPzz2sYriFLWqMJzv7iXrBH8+tQOQmx3WDKksMMlsIlOHM24nFIBdyrsYKch2VuL85mNkfrh5yhvLG1wRE+rc3gJ8nPtdz63KW7Qqa5CV35y5LrJU7KXvCBMry4K9KIqLscBIE+1QO4uP/Uc9EVeaomcfxILLIR6Qr8jRX6nXBvLxBdrPpJDqPcAphr1zigyFS6Q+cq0nef8spEChbcEgrWK5JWIfz1Uh+Rt6PRYB7yuA3dPFh8byfGSIsSGSa/vAuckB+yvK0iLhmLdlNw2ptMO9it1zvn7Kj0gH94LVAJv1cei2Zbf6b+BfAYJcahoAjcEqSlhil/m4AbMW0hqFe43K/pNALWRGQ====%%"
     docker_password:
-      default: "%%secrets.==$1$key=default$text$ACKc3+fPfWGBT6V3K2jTcM5aD9kNijL7LBQsKVDdO2BRtcRKxoWtFjPOIQcqS10b16nsjESyPn/ZBmeZ1JmS9giAV7vR2+026HlrSCAgMrNN9olpCPTkVOhJiDM9RAQzS7uiIXRtLxp+JHnwIiaRDi2lqid2UaavfzJeI6M4ua0OOjEA4X1YUpMTKgdVkq7dxu95c/XHydnZc52BhSEUxP0J60Juv9nEtTXorhpCbDxxG6FJ/JfcG5DgU0PZ5nJw/XCbM5jDi7RWXVFFGlcNt3kyMN0Jb3NBeidNpx+Kp+n+4guv5XkUmYlCO+hz9gXfa5xTEueC0BgO7D7lLgxiUJdVQEguXAJ23LOv56ywChORaIqx6JQGzRFxRF6VsNEiKG8UYZRyznEmN6p8WepDQzxaZDl55P6pTIMXWdgUGoZVdQ====%%"
+      default: "%%secrets.==$1$key=default$text$AQkQcEi8RWfIPf0wiryov2abAPDSmEBdYokTftIgXGcUJcaiv02A9nkOuJgXoUO4yZWR5B+evyplXF5QsV+tcswRV7qPvmIByoMli3QrQ4qv9qJgdarVU1lwB9v1czkLKn2zelvoCmpw8ExkwWjFFIg7W1p4XBAAJEPKL9QL0tQnEIfPUi4wLyPIDVzvRx0F4GvPd9P7UgjzXWv1RAJ8oyP861Km2VxRR566Di8rsB8PLL2lgf3+vmQeh3uFNQU1Bjv56fDq+Rve6s+JRb42B+cST7AZA9ZY+PxwK36jmPzSNfw0wy5Iet7WQF0UmRJH4sHJjXUypPGg82j+i1HD9I+eejzvg7gJumMYSBH4LqB7XViTOCuuz86k4aP9Fp68eh7haMNLxVb0524kEBX5NK/qEyB6ip2Bu1XoV+n1xRYnJw====%%"
 
   artifacts:
   - from: "%%code%%"
@@ -48,7 +48,7 @@ inputs:
     appname:
       default: "sampleapp"
     domain:
-      default: " "
+      default: " skynet3.applatix.net"
     version:
       default: "v1"
 

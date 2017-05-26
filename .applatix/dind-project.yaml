@@ -10,21 +10,10 @@ actions:
       commit: c1ae674
       version: v1
   -
-    name: build v2 image
-    template: docker-image-build
-    parameters:
-      commit: 023f0e95
-      version: v2
-  -
     name: deploy v1 image
     template: docker-image-deploy
     parameters:
       version: v1
-  -
-    name: deploy v2 image
-    template: docker-image-deploy
-    parameters:
-      version: v2
   -
     name: build and deploy v1 image
     template: docker-image-build-approve-deploy
