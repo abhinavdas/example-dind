@@ -32,39 +32,6 @@ steps:
       template: docker-image-deployment
 ---
 
-type: workflow
-name: docker-image-build
-inputs:
-  parameters:
-    commit:
-      default: "%%session.commit%%"
-    repo:
-      default: "%%session.repo%%"
-    version:
-      default: "v1"
-
-steps:
-  - checkout:
-      template: axscm-checkout
-  - build:
-      template: docker-image-build-container
-      parameters:
-        code: "%%steps.checkout.code%%"
-
----
-
-type: workflow
-name: docker-image-deploy
-inputs:
-  parameters:
-    version:
-      default: "v1"
-
-steps:
-  - deploy:
-      template: docker-image-deployment
-
----
 type: container
 name: docker-image-build-container
 description: build docker image
@@ -105,8 +72,6 @@ inputs:
   parameters:
     appname:
       default: "sampleapp"
-    domain:
-      default: " skynet3.applatix.net"
     version:
       default: "v1"
 
@@ -116,6 +81,7 @@ deployment:
   name: "node"
 external_routes:
   - name: "%%appname%%"
+    dns_prefix: "dind"
     target_port: 80
     ip_white_list:
       - 0.0.0.0/0

@@ -4,17 +4,6 @@ name: Docker in Docker
 description: Build and deploy a docker image
 actions:
   -
-    name: build v1 image
-    template: docker-image-build
-    parameters:
-      commit: c1ae674
-      version: v1
-  -
-    name: deploy v1 image
-    template: docker-image-deploy
-    parameters:
-      version: v1
-  -
     name: build and deploy v1 image
     template: docker-image-build-approve-deploy
     parameters:
