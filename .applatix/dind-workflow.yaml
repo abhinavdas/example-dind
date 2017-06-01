@@ -1,4 +1,70 @@
 ---
+type: workflow
+name: docker-image-build-approve-deploy
+inputs:
+  parameters:
+    commit:
+      default: "%%session.commit%%"
+    repo:
+      default: "%%session.repo%%"
+    version:
+      default: "v1"
+    required_approvals:
+      default: " "
+    optional_approvals:
+      default: " "
+    number_of_optional_approvals_needed:
+      default: 0
+    timeout_in_minutes:
+      default: 10 
+ 
+ 
+steps:
+  - checkout:
+      template: axscm-checkout
+  - build:
+      template: docker-image-build-container
+      parameters:
+        code: "%%steps.checkout.code%%"
+  - approval:
+      template: axapproval
+  - deploy:
+      template: docker-image-deployment
+---
+
+type: workflow
+name: docker-image-build
+inputs:
+  parameters:
+    commit:
+      default: "%%session.commit%%"
+    repo:
+      default: "%%session.repo%%"
+    version:
+      default: "v1"
+
+steps:
+  - checkout:
+      template: axscm-checkout
+  - build:
+      template: docker-image-build-container
+      parameters:
+        code: "%%steps.checkout.code%%"
+
+---
+
+type: workflow
+name: docker-image-deploy
+inputs:
+  parameters:
+    version:
+      default: "v1"
+
+steps:
+  - deploy:
+      template: docker-image-deployment
+
+---
 type: container
 name: docker-image-build-container
 description: build docker image
@@ -33,17 +99,6 @@ labels:
     "ax_ea_docker_enable": '{ "graph-storage-name": "sampledockerapp", "graph-storage-size": "10Gi", "cpu_cores":"0.5", "mem_mib":"800"}'
 
 ---
-type: container
-name: sampleapp-image-container
-description: Run a sample app (node based web server.)
-inputs:
-  parameters:
-    version:
-container:
-  image: "get.applatix.io/demo/sampleapp-image:%%version%%"
-  command: "cd /usr/src/app && npm install && npm start"
-
----
 type: deployment
 name: docker-image-deployment
 inputs:
@@ -70,66 +125,14 @@ containers:
       template: sampleapp-image-container
 
 ---
-type: workflow
-name: docker-image-build
-inputs:
-  parameters:
-    commit:
-      default: "%%session.commit%%"
-    repo:
-      default: "%%session.repo%%"
-    version:
-      default: "v1"
 
-steps:
-  - checkout:
-      template: axscm-checkout
-  - build:
-      template: docker-image-build-container
-      parameters:
-        code: "%%steps.checkout.code%%"
-
----
-type: workflow
-name: docker-image-deploy
+type: container
+name: sampleapp-image-container
+description: Run a sample app (node based web server.)
 inputs:
   parameters:
     version:
-      default: "v1"
-
-steps:
-  - deploy:
-      template: docker-image-deployment
-
----
-type: workflow
-name: docker-image-build-approve-deploy
-inputs:
-  parameters:
-    commit:
-      default: "%%session.commit%%"
-    repo:
-      default: "%%session.repo%%"
-    version:
-      default: "v1"
-    required_approvals:
-      default: " "
-    optional_approvals:
-      default: " "
-    number_of_optional_approvals_needed:
-      default: 0
-    timeout_in_minutes:
-      default: 10 
- 
-steps:
-  - checkout:
-      template: axscm-checkout
-  - build:
-      template: docker-image-build-container
-      parameters:
-        code: "%%steps.checkout.code%%"
-  - approval:
-      template: axapproval
-  - deploy:
-      template: docker-image-deployment
+container:
+  image: "get.applatix.io/demo/sampleapp-image:%%version%%"
+  command: "cd /usr/src/app && npm install && npm start"
 
