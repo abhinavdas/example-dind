@@ -21,6 +21,9 @@ container:
   # Build a docker image and push it
   # The docker:1.12 image already has the docker command installed
   image: docker:1.12
+  resources:
+    cpu_cores: 0.1
+    mem_mib: 1024
   command: "cd /src &&
               docker login -u %%docker_username%% -p %%docker_password%% get.applatix.io &&
               docker build -f Dockerfile -t get.applatix.io/demo/sampleapp-image:%%version%% . &&
