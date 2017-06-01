@@ -81,7 +81,6 @@ deployment:
   name: "node"
 external_routes:
   - name: "%%appname%%"
-    dns_prefix: "dind"
     target_port: 80
     ip_white_list:
       - 0.0.0.0/0
